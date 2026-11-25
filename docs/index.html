@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Flipdisc — a flip-disc design system</title>
+<meta name="description" content="Flipdisc: a black, white and orange website design system modelled on electromechanical flip-disc signs.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27%3E%3Ccircle cx=%278%27 cy=%278%27 r=%277%27 fill=%27%23ff6a00%27/%3E%3C/svg%3E">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components/bundle.css">
+<script src="vendor/react.production.min.js"></script>
+<script src="vendor/react-dom.production.min.js"></script>
+<script src="components/bundle.js"></script>
+<script>
+(function(){
+  var k='fd-theme',t;try{t=localStorage.getItem(k)}catch(e){}
+  if(t)document.documentElement.setAttribute('data-theme',t);
+  window.fdToggleTheme=function(){
+    var n=document.documentElement.getAttribute('data-theme')==='paper'?'board':'paper';
+    document.documentElement.setAttribute('data-theme',n);try{localStorage.setItem(k,n)}catch(e){}
+  };
+})();
+</script>
+<style>
+  body{margin:0}
+  .pg{max-width:1104px;margin:0 auto;padding:0 var(--space-6)}
+  header{display:flex;justify-content:space-between;align-items:center;gap:var(--space-4);flex-wrap:wrap;padding:var(--space-8) 0}
+  .hero{padding:var(--space-8) 0 var(--space-12)}
+  .hero p{font-size:18px;line-height:28px;color:var(--ink-muted);max-width:60ch;margin:var(--space-6) 0}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:var(--space-6);padding-bottom:var(--space-16)}
+  .card{background:var(--surface-100);border:1px solid var(--line);border-radius:var(--radius-sm);padding:var(--space-6);min-width:0}
+  .card.wide{grid-column:1/-1}
+  .card-head{display:flex;justify-content:space-between;gap:var(--space-4)}
+  .card h2{margin:var(--space-3) 0 0;font-size:20px;line-height:28px}
+  .sub{margin:var(--space-1) 0 var(--space-4);color:var(--ink-muted);font-size:14px}
+  .open{color:var(--orange-text);font-size:14px;text-decoration:none}
+  .open:hover,.open:focus-visible{text-decoration:underline}
+  iframe{display:block;width:100%;border:1px solid var(--line);border-radius:var(--radius-sm);background:var(--surface-000)}
+  footer{padding:var(--space-8) 0;color:var(--ink-muted);font-size:14px;border-top:1px solid var(--line)}
+  footer a{color:var(--ink)}
+</style>
+</head>
+<body class="fd-root">
+<div class="pg">
+  <header>
+    <div id="brand"></div>
+    <div id="actions"></div>
+  </header>
+  <section class="hero">
+    <div id="board"></div>
+    <p>A black, white and orange website system modelled on the electromechanical flip-disc sign — a dot-matrix font drawn in pure CSS, a canvas-backed full-page disc field, and a small set of React components.</p>
+    <div id="ctas"></div>
+  </section>
+  <main class="grid">
+      <article class="card wide">
+        <div class="card-head"><span class="fd-label">Pages</span>
+          <a class="open" href="components/HomepageField/">Open HomepageField &rarr;</a></div>
+        <h2>HomepageField</h2><p class="sub">The whole page as one flip-disc board</p>
+        <iframe src="components/HomepageField/" title="HomepageField preview" loading="lazy" style="height:420px"></iframe>
+      </article>
+      <article class="card wide">
+        <div class="card-head"><span class="fd-label">Pages</span>
+          <a class="open" href="components/Homepage/">Open Homepage &rarr;</a></div>
+        <h2>Homepage</h2><p class="sub">A full landing page built from the system</p>
+        <iframe src="components/Homepage/" title="Homepage preview" loading="lazy" style="height:420px"></iframe>
+      </article>
+      <article class="card">
+        <div class="card-head"><span class="fd-label">Display</span>
+          <a class="open" href="components/DiscField/">Open DiscField &rarr;</a></div>
+        <h2>DiscField</h2><p class="sub">Hover the buttons — they flip</p>
+        <iframe src="components/DiscField/" title="DiscField preview" loading="lazy" style="height:270px"></iframe>
+      </article>
+      <article class="card">
+        <div class="card-head"><span class="fd-label">Display</span>
+          <a class="open" href="components/DiscDisplay/">Open DiscDisplay &rarr;</a></div>
+        <h2>DiscDisplay</h2><p class="sub">Cycling, orange and fixed-pitch boards</p>
+        <iframe src="components/DiscDisplay/" title="DiscDisplay preview" loading="lazy" style="height:370px"></iframe>
+      </article>
+      <article class="card">
+        <div class="card-head"><span class="fd-label">Actions</span>
+          <a class="open" href="components/Button/">Open Button &rarr;</a></div>
+        <h2>Button</h2><p class="sub">Component</p>
+        <iframe src="components/Button/" title="Button preview" loading="lazy" style="height:240px"></iframe>
+      </article>
+      <article class="card">
+        <div class="card-head"><span class="fd-label">Navigation</span>
+          <a class="open" href="components/NavBar/">Open NavBar &rarr;</a></div>
+        <h2>NavBar</h2><p class="sub">Component</p>
+        <iframe src="components/NavBar/" title="NavBar preview" loading="lazy" style="height:240px"></iframe>
+      </article>
+      <article class="card">
+        <div class="card-head"><span class="fd-label">Content</span>
+          <a class="open" href="components/Panel/">Open Panel &rarr;</a></div>
+        <h2>Panel</h2><p class="sub">Component</p>
+        <iframe src="components/Panel/" title="Panel preview" loading="lazy" style="height:300px"></iframe>
+      </article>
+      <article class="card">
+        <div class="card-head"><span class="fd-label">Status</span>
+          <a class="open" href="components/StatusDisc/">Open StatusDisc &rarr;</a></div>
+        <h2>StatusDisc</h2><p class="sub">Component</p>
+        <iframe src="components/StatusDisc/" title="StatusDisc preview" loading="lazy" style="height:240px"></iframe>
+      </article>
+  </main>
+  <footer>Flipdisc design system &middot; <a href="https://github.com/ADivers/flipdisc">Source on GitHub</a> &middot; <a href="tokens.json">tokens.json</a></footer>
+</div>
+<script>
+  var F = window.Flipdisc, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('brand')).render(h(F.DiscDisplay, { messages: ['FLIPDISC'], pitch: 'sm', boot: false }));
+  ReactDOM.createRoot(document.getElementById('actions')).render(h(F.Button, { variant: 'ghost', size: 'sm', onClick: function () { fdToggleTheme(); } }, 'Toggle theme'));
+  ReactDOM.createRoot(document.getElementById('board')).render(h(F.DiscDisplay, { messages: ['FLIPDISC', 'SIMPLE.', 'FAST.', 'FLIP!'], fit: true, color: 'orange', label: 'Flipdisc' }));
+  ReactDOM.createRoot(document.getElementById('ctas')).render(h('div', { style: { display: 'flex', gap: '12px', flexWrap: 'wrap' } },
+    h(F.Button, { href: 'components/HomepageField/' }, 'See the full-page demo'),
+    h(F.Button, { variant: 'secondary', href: 'https://github.com/ADivers/flipdisc' }, 'View source')));
+</script>
+</body>
+</html>

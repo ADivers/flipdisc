@@ -1,0 +1,17 @@
+<!-- @dsCard group="Navigation" height=96 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>NavBar — preview</title><style>body{margin:0}</style></head>
+<body class="fd-root">
+<div id="root"></div>
+<script>
+  var F = window.Flipdisc, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(
+    h(F.NavBar, {
+      brand: 'FLIPDISC',
+      links: [{ label: 'Home', active: true }, { label: 'Schedule' }, { label: 'About' }, { label: 'Contact' }],
+      action: h(F.Button, { size: 'sm' }, 'Get started')
+    }));
+</script>
+</body>
+</html>

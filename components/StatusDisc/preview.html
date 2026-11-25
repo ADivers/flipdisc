@@ -1,0 +1,18 @@
+<!-- @dsCard group="Status" height=72 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>StatusDisc — preview</title>
+<style>body{margin:0}.wrap{padding:24px;display:flex;gap:24px;flex-wrap:wrap}</style>
+</head>
+<body class="fd-root">
+<div id="root" class="wrap"></div>
+<script>
+  var F = window.Flipdisc, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null,
+    h(F.StatusDisc, { state: 'on' }, 'On time'),
+    h(F.StatusDisc, { state: 'alert' }, 'Delayed'),
+    h(F.StatusDisc, { state: 'off' }, 'Offline')
+  ));
+</script>
+</body>
+</html>

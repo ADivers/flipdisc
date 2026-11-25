@@ -1,0 +1,49 @@
+/* Generated from tokens.json by tools/build_pages.py. Do not edit. */
+:root, [data-theme="board"] {
+  color-scheme: dark;
+  --surface-000: #0a0a0a;
+  --surface-100: #141414;
+  --surface-200: #1e1e1e;
+  --line: #2a2a2a;
+  --line-strong: #6b6b66;
+  --ink: #f5f5f0;
+  --ink-muted: #9a9a94;
+  --orange-text: #ff7a1a;
+}
+[data-theme="paper"] {
+  color-scheme: light;
+  --surface-000: #f4f2ee;
+  --surface-100: #ffffff;
+  --surface-200: #ebe8e2;
+  --line: #dcd8d0;
+  --line-strong: #7d7a73;
+  --ink: #0d0d0d;
+  --ink-muted: #5c5c58;
+  --orange-text: #c24e00;
+}
+:root {
+  --orange-500: #ff6a00;
+  --on-orange: #0a0a0a;
+  --focus: {orange-text};
+  --housing: #050505;
+  --disc-off: #1b1b1b;
+  --disc-white: #f2f2ea;
+  --disc-orange: #ff7a00;
+  --board-muted: #9a9a94;
+  --font-sans: system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --radius-0: 0;
+  --radius-sm: 2px;
+  --radius-disc: 50%;
+  --pitch-sm: 6px;
+  --pitch-md: 10px;
+  --pitch-lg: 16px;
+}

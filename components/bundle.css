@@ -1,0 +1,75 @@
+/* Flipdisc components — reads only tokens.css custom properties. */
+.fd-root{background:var(--surface-000);color:var(--ink);font-family:var(--font-sans);font-size:16px;line-height:24px;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+.fd-root *,.fd-root *::before,.fd-root *::after{box-sizing:border-box}
+.fd-label{font-family:var(--font-mono);font-size:12px;line-height:16px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-muted)}
+
+/* DiscDisplay ------------------------------------------------------------ */
+.fd-board{--fd-on:var(--disc-white);box-sizing:border-box;display:inline-grid;grid-template-columns:repeat(var(--fd-cols),var(--fd-pitch));grid-auto-rows:var(--fd-pitch);padding:calc(var(--fd-pitch) * .5);background:var(--housing);border-radius:var(--radius-sm);max-width:100%;overflow:hidden;vertical-align:top;contain:layout paint}
+.fd-board.fd-orange{--fd-on:var(--disc-orange)}
+.fd-board.fd-fit{display:grid;width:100%;grid-template-columns:repeat(var(--fd-cols),minmax(0,1fr));grid-auto-rows:auto;padding:calc(50% / var(--fd-cols))}
+.fd-d{display:block;aspect-ratio:1;background:var(--disc-off);clip-path:circle(42% at 50% 50%)}
+.fd-d.on{background:var(--fd-on)}
+.fd-d.m{animation:fd-out var(--fd-speed,180ms) linear var(--d,0ms) both}
+.fd-d.m.on{animation-name:fd-in}
+@keyframes fd-in{0%{transform:scaleX(1);background:var(--disc-off)}49.9%{transform:scaleX(.06);background:var(--disc-off)}50%{transform:scaleX(.06);background:var(--fd-on)}100%{transform:scaleX(1);background:var(--fd-on)}}
+@keyframes fd-out{0%{transform:scaleX(1);background:var(--fd-on)}49.9%{transform:scaleX(.06);background:var(--fd-on)}50%{transform:scaleX(.06);background:var(--disc-off)}100%{transform:scaleX(1);background:var(--disc-off)}}
+@media (prefers-reduced-motion:reduce){.fd-d.m{animation:none}}
+
+/* Button ----------------------------------------------------------------- */
+.fd-btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-2);height:40px;padding:0 var(--space-4);font-family:var(--font-sans);font-size:14px;line-height:20px;font-weight:600;letter-spacing:.02em;border:1px solid transparent;border-radius:var(--radius-sm);cursor:pointer;text-decoration:none;white-space:nowrap;transition:background-color 120ms linear,border-color 120ms linear,color 120ms linear}
+.fd-btn:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.fd-btn:disabled,.fd-btn[aria-disabled="true"]{opacity:.45;cursor:not-allowed}
+.fd-btn-primary{background:var(--orange-500);color:var(--on-orange)}
+.fd-btn-primary:hover:not(:disabled){background:var(--ink);color:var(--surface-000)}
+.fd-btn-secondary{background:transparent;color:var(--ink);border-color:var(--line-strong)}
+.fd-btn-secondary:hover:not(:disabled){border-color:var(--ink)}
+.fd-btn-ghost{background:transparent;color:var(--ink)}
+.fd-btn-ghost:hover:not(:disabled){background:var(--surface-200)}
+.fd-btn-sm{height:32px;padding:0 var(--space-3);font-size:13px}
+.fd-btn-dot{width:8px;height:8px;border-radius:var(--radius-disc);background:currentColor;flex:none}
+
+/* NavBar ----------------------------------------------------------------- */
+.fd-nav{display:flex;align-items:center;flex-wrap:wrap;gap:var(--space-4) var(--space-6);padding:var(--space-4) var(--space-6);background:var(--surface-000);border-bottom:1px solid var(--line)}
+.fd-nav-brand{display:inline-flex;line-height:0;border-radius:var(--radius-sm)}
+.fd-nav-brand:focus-visible,.fd-nav-link:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.fd-nav-links{display:flex;flex-wrap:wrap;gap:var(--space-1);margin-right:auto}
+.fd-nav-link{display:inline-flex;align-items:center;gap:var(--space-2);padding:var(--space-2) var(--space-3);font-family:var(--font-mono);font-size:12px;line-height:16px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-muted);text-decoration:none;border-radius:var(--radius-sm)}
+.fd-nav-link:hover{color:var(--ink)}
+.fd-nav-link.is-active{color:var(--ink)}
+.fd-nav-link.is-active::before{content:"";width:6px;height:6px;border-radius:var(--radius-disc);background:var(--orange-text)}
+.fd-nav-action{display:flex;gap:var(--space-2)}
+
+/* Panel ------------------------------------------------------------------ */
+.fd-panel{display:flex;flex-direction:column;gap:var(--space-3);padding:var(--space-6);background:var(--surface-100);color:var(--ink);border:1px solid var(--line);border-radius:var(--radius-sm)}
+.fd-panel-title{margin:0;font-family:var(--font-sans);font-size:20px;line-height:26px;font-weight:700;letter-spacing:-.01em}
+.fd-panel-body{margin:0;color:var(--ink-muted)}
+.fd-panel-body > :first-child{margin-top:0}.fd-panel-body > :last-child{margin-bottom:0}
+.fd-panel-board{background:var(--housing);border-color:var(--housing);color:var(--disc-white)}
+.fd-panel-board .fd-label,.fd-panel-board .fd-panel-body{color:var(--board-muted)}
+
+/* StatusDisc ------------------------------------------------------------- */
+.fd-status{display:inline-flex;align-items:center;gap:var(--space-2);font-family:var(--font-mono);font-size:12px;line-height:16px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
+.fd-status-disc{width:10px;height:10px;flex:none;border-radius:var(--radius-disc);background:var(--disc-off);box-shadow:0 0 0 3px var(--housing)}
+.fd-status-disc.is-on{background:var(--disc-white)}
+.fd-status-disc.is-alert{background:var(--disc-orange)}
+
+/* DiscField -------------------------------------------------------------- */
+/* Unlit discs are a CSS pattern; the canvas only paints lit and flipping discs. Inside a field
+   the theme is forced to the board: components read the same tokens and come out light-on-black. */
+.fd-field{--fd-field-pitch:8px;position:relative;
+  --surface-000:var(--housing);--surface-100:var(--housing);--surface-200:var(--disc-off);
+  --ink:var(--disc-white);--ink-muted:var(--board-muted);--line:var(--disc-off);--line-strong:var(--board-muted);
+  --orange-text:var(--disc-orange);--focus:var(--disc-orange);
+  color:var(--ink);background-color:var(--housing);
+  background-image:radial-gradient(circle closest-side,var(--disc-off) 82%,transparent 87%);
+  background-size:var(--fd-field-pitch) var(--fd-field-pitch);background-position:0 0}
+.fd-field-canvas{position:absolute;left:0;top:0;z-index:0;pointer-events:none}
+.fd-field-content{position:relative;z-index:1}
+.fd-field-live [data-disc="text"]{display:block;max-width:100%;overflow:hidden;white-space:nowrap;color:transparent;-webkit-text-fill-color:transparent;margin:0}
+.fd-field-live .fd-btn[data-disc]{background:transparent;border-color:transparent}
+.fd-field-live .fd-btn[data-disc="outline"]:hover{background:transparent;border-color:transparent;color:var(--ink)}
+/* A filled button: the canvas lights the whole box; a solid plate inset by one disc carries the label. */
+.fd-field-live .fd-btn[data-disc="fill"]{height:auto;padding:4px var(--space-3);border:var(--fd-field-pitch) solid transparent;background:var(--disc-orange) padding-box;color:var(--on-orange);transition:background-color 180ms steps(1,jump-none) 90ms}
+.fd-field-live .fd-btn[data-disc="fill"][data-disc-color="white"]{background-color:var(--disc-white)}
+.fd-field-live .fd-btn[data-disc="fill"][data-disc-hover="white"]:hover,.fd-field-live .fd-btn[data-disc="fill"][data-disc-hover="white"]:focus-visible{background-color:var(--disc-white);color:var(--on-orange)}
+.fd-field-live .fd-panel[data-disc]{background:transparent;border-color:transparent}

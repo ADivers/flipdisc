@@ -1,0 +1,20 @@
+<!-- @dsCard group="Display" height=230 subtitle="Hover the buttons — they flip" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>DiscField — preview</title>
+<style>body{margin:0}.in{padding:24px;display:grid;gap:24px}.row{display:flex;gap:12px;flex-wrap:wrap}.box{padding:24px;max-width:420px}</style>
+</head>
+<body class="fd-root">
+<div id="root"></div>
+<script>
+  var F = window.Flipdisc, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(
+    h(F.DiscField, null,
+      h('div', { className: 'in' },
+        h('div', { 'data-disc': 'text', 'data-disc-messages': 'HELLO.|FLIP!|FAST.', 'data-disc-scale': 2 }, 'HELLO.'),
+        h('div', { className: 'row' },
+          h(F.Button, { 'data-disc': 'fill', 'data-disc-color': 'orange', 'data-disc-hover': 'white' }, 'Get started'),
+          h(F.Button, { variant: 'secondary', 'data-disc': 'outline', 'data-disc-hover': 'orange' }, 'View schedule')))));
+</script>
+</body>
+</html>

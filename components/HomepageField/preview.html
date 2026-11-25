@@ -1,0 +1,87 @@
+<!-- @dsCard group="Pages" height=1600 width=1200 page subtitle="The whole page as one flip-disc board" -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Homepage (disc field) — preview</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body{margin:0;background:var(--housing)}
+  .pg{max-width:1104px;margin:0 auto;padding:0 var(--space-6)}
+  .nav{display:flex;align-items:center;gap:var(--space-4) var(--space-8);flex-wrap:wrap;padding:var(--space-6) 0}
+  .nav-links{display:flex;gap:var(--space-1);flex-wrap:wrap;margin-right:auto}
+  .hero{padding:var(--space-16) 0 var(--space-12);display:grid;gap:var(--space-8)}
+  .hero-copy{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--space-6);align-items:end}
+  .h1{margin:0;font-size:32px;line-height:40px;font-weight:700;letter-spacing:-.01em;max-width:24ch}
+  .lede{margin:var(--space-3) 0 0;font-size:18px;line-height:28px;color:var(--ink-muted);max-width:56ch}
+  .ctas{display:flex;gap:var(--space-3);flex-wrap:wrap}
+  .sec{padding:var(--space-12) 0}
+  .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:var(--space-4);flex-wrap:wrap;margin-bottom:var(--space-8)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:var(--space-4)}
+  .grid .fd-panel{padding:var(--space-8)}
+  .sched{display:grid;gap:var(--space-4);overflow:hidden}
+  .sched-row{display:grid;grid-template-columns:220px minmax(0,1fr) minmax(0,1fr);gap:var(--space-6);align-items:start}
+  .sched-row.head .fd-label{color:var(--ink-muted)}
+  .foot{padding:var(--space-12) 0 var(--space-8);display:flex;justify-content:space-between;align-items:flex-end;gap:var(--space-4);flex-wrap:wrap}
+  .small{font-size:14px;line-height:20px;color:var(--ink-muted)}
+  @media (max-width:720px){
+    .hero-copy{grid-template-columns:1fr}
+    .sched-row{grid-template-columns:140px minmax(0,1fr);gap:var(--space-3)}
+    .sched-row > :nth-child(3){grid-column:2}
+  }
+</style>
+</head>
+<body class="fd-root">
+<div id="root"></div>
+<script>
+  var F = window.Flipdisc, h = React.createElement;
+  var rows = [['09:40', 'REVIEW', 'ON TIME', 'white'], ['11:15', 'BUILD 2.4', 'BOARDING', 'orange'], ['14:00', 'LAUNCH', 'ON TIME', 'white'], ['16:30', 'RETRO', 'DELAYED', 'orange']];
+  function T(text, extra) { return h('div', Object.assign({ 'data-disc': 'text' }, extra || {}), text); }
+  function Page() {
+    return h(F.DiscField, { pitch: 8, pitchSm: 4 },
+      h('div', { className: 'pg' },
+        h('header', { className: 'nav' },
+          h('a', { href: '#', 'aria-label': 'Flipdisc home', style: { display: 'block' } }, T('FLIPDISC')),
+          h('nav', { className: 'nav-links', 'aria-label': 'Primary' },
+            h('a', { className: 'fd-nav-link is-active', href: '#', 'aria-current': 'page' }, 'Home'),
+            h('a', { className: 'fd-nav-link', href: '#' }, 'Schedule'),
+            h('a', { className: 'fd-nav-link', href: '#' }, 'Work'),
+            h('a', { className: 'fd-nav-link', href: '#' }, 'About')),
+          h(F.Button, { size: 'sm', 'data-disc': 'fill', 'data-disc-color': 'orange', 'data-disc-hover': 'white' }, 'Get in touch')),
+        h('main', null,
+          h('section', { className: 'hero' },
+            T('HELLO.', { 'data-disc-messages': 'HELLO.|SIMPLE.|FAST.|FLIP!', 'data-disc-scale': 3, 'data-disc-align': 'center', 'aria-live': 'off' }),
+            h('div', { className: 'hero-copy' },
+              h('div', null,
+                h('h1', { className: 'h1' }, 'The whole page is one flip-disc board.'),
+                h('p', { className: 'lede' }, 'One canvas, drawn only where discs are lit or flipping. Unlit discs are a CSS pattern. Paragraphs like this one stay real text.')),
+              h('div', { className: 'ctas' },
+                h(F.Button, { 'data-disc': 'fill', 'data-disc-color': 'orange', 'data-disc-hover': 'white' }, 'Get started'),
+                h(F.Button, { variant: 'secondary', 'data-disc': 'outline', 'data-disc-hover': 'orange' }, 'View schedule')))),
+          h('section', { className: 'sec' },
+            h('div', { className: 'sec-head' }, T('WHY IT WORKS', { 'data-disc-color': 'orange' })),
+            h('div', { className: 'grid' },
+              h(F.Panel, { label: '01 · Speed', title: 'Fast by default', 'data-disc': 'outline' }, 'A few kilobytes of script, system fonts and no images. A still page does no drawing at all.'),
+              h(F.Panel, { label: '02 · Colour', title: 'Black, white, orange' }, 'Black is the ground, white is information, orange is the signal.'),
+              h(F.Panel, { label: '03 · Motion', title: 'Discs flip, nothing fades' }, 'Sections flip in as they scroll into view; buttons flip on hover and focus.'))),
+          h('section', { className: 'sec' },
+            h('div', { className: 'sec-head' }, T('DEPARTURES', { 'data-disc-color': 'orange' }), h(F.StatusDisc, { state: 'on' }, 'Updated 14:32')),
+            h('div', { className: 'sched', role: 'table', 'aria-label': 'Today’s schedule' },
+              h('div', { className: 'sched-row head', role: 'row' },
+                h('span', { className: 'fd-label', role: 'columnheader' }, 'Time'), h('span', { className: 'fd-label', role: 'columnheader' }, 'Event'), h('span', { className: 'fd-label', role: 'columnheader' }, 'Status')),
+              rows.map(function (r, i) {
+                return h('div', { className: 'sched-row', role: 'row', key: i },
+                  T(r[0], { role: 'cell' }), T(r[1], { role: 'cell' }), T(r[2], { role: 'cell', 'data-disc-color': r[3] }));
+              }))),
+          h('section', { className: 'sec' },
+            h('div', { className: 'hero-copy' },
+              h('div', null,
+                T('START HERE'),
+                h('p', { className: 'lede' }, 'Put your message on the board: short, in capitals, one at a time.')),
+              h('div', { className: 'ctas' }, h(F.Button, { 'data-disc': 'fill', 'data-disc-color': 'orange', 'data-disc-hover': 'white' }, 'Get started'))))),
+        h('footer', { className: 'foot' },
+          T('THANK YOU', { 'data-disc-color': 'orange' }),
+          h('span', { className: 'small' }, '© 2026 Flipdisc. Built with circles.'))));
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(h(Page));
+</script>
+</body>
+</html>

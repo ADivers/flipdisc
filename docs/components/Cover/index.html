@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Cover</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27%3E%3Ccircle cx=%278%27 cy=%278%27 r=%277%27 fill=%27%23ff6a00%27/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../components/bundle.css">
+<script src="../../vendor/react.production.min.js"></script>
+<script src="../../vendor/react-dom.production.min.js"></script>
+<script src="../../components/bundle.js"></script>
+<script>
+(function(){
+  var k='fd-theme',t;try{t=localStorage.getItem(k)}catch(e){}
+  if(t)document.documentElement.setAttribute('data-theme',t);
+  window.fdToggleTheme=function(){
+    var n=document.documentElement.getAttribute('data-theme')==='paper'?'board':'paper';
+    document.documentElement.setAttribute('data-theme',n);try{localStorage.setItem(k,n)}catch(e){}
+  };
+})();
+</script>
+
+<style>
+  body{margin:0;background:var(--surface-000)}
+  .cv{position:relative;width:960px;height:300px;overflow:hidden;background:var(--surface-000)}
+  .cv svg{position:absolute;inset:0}
+  .b-orange{fill:var(--orange-500)}
+  .b-ink{fill:var(--ink)}
+  .d-off{fill:var(--disc-off)}
+  .d-on{fill:var(--disc-white)}
+  .cv-text{position:absolute;left:40px;bottom:40px;max-width:440px}
+  .cv-name{margin:0;font-family:var(--font-sans);font-size:88px;line-height:.92;font-weight:700;letter-spacing:-.02em;color:var(--ink)}
+  .cv-tag{margin:12px 0 0;font-family:var(--font-sans);font-size:14px;line-height:20px;color:var(--ink-muted)}
+</style>
+</head>
+<body>
+<div class="cv">
+  <!--
+    blocks: orange-500 slab 312×300 (bleeds top and bottom); ink slab 144×204 (bleeds top and right) — ink reads white on Board, black on Paper.
+    arrangement: one tall slab with a shorter satellite, space-6 (24px) gap, all right of x=480.
+    pattern: disc grid on the orange slab — "a grid of round discs, each showing its black face or its lit face" — 6×6 discs, a chevron flipped to disc-white.
+    scales: pitch space-12 (48px), disc diameter 36px (radius-disc), gap space-6.
+  -->
+  <svg width="960" height="300" viewBox="0 0 960 300" aria-hidden="true">
+    <rect class="b-orange" x="480" y="0" width="312" height="300"/>
+    <rect class="b-ink" x="816" y="0" width="144" height="204"/>
+    <g id="discs"></g>
+  </svg>
+  <div class="cv-text">
+    <h1 class="cv-name">Flipdisc</h1>
+    <p class="cv-tag">A website system built on the flip-disc sign.</p>
+  </div>
+</div>
+<script>
+  (function () {
+    var g = document.getElementById('discs'), ns = 'http://www.w3.org/2000/svg';
+    for (var r = 0; r < 6; r++) for (var c = 0; c < 6; c++) {
+      var lit = c === 2 + (r < 3 ? r : 5 - r);
+      var e = document.createElementNS(ns, 'circle');
+      e.setAttribute('cx', 516 + c * 48); e.setAttribute('cy', 30 + r * 48); e.setAttribute('r', 18);
+      e.setAttribute('class', lit ? 'd-on' : 'd-off');
+      g.appendChild(e);
+    }
+  })();
+</script>
+</body>
+</html>

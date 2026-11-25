@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>DiscField — preview</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27%3E%3Ccircle cx=%278%27 cy=%278%27 r=%277%27 fill=%27%23ff6a00%27/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../components/bundle.css">
+<script src="../../vendor/react.production.min.js"></script>
+<script src="../../vendor/react-dom.production.min.js"></script>
+<script src="../../components/bundle.js"></script>
+<script>
+(function(){
+  var k='fd-theme',t;try{t=localStorage.getItem(k)}catch(e){}
+  if(t)document.documentElement.setAttribute('data-theme',t);
+  window.fdToggleTheme=function(){
+    var n=document.documentElement.getAttribute('data-theme')==='paper'?'board':'paper';
+    document.documentElement.setAttribute('data-theme',n);try{localStorage.setItem(k,n)}catch(e){}
+  };
+})();
+</script>
+
+<style>body{margin:0}.in{padding:24px;display:grid;gap:24px}.row{display:flex;gap:12px;flex-wrap:wrap}.box{padding:24px;max-width:420px}</style>
+</head>
+<body class="fd-root">
+<div id="root"></div>
+<script>
+  var F = window.Flipdisc, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(
+    h(F.DiscField, null,
+      h('div', { className: 'in' },
+        h('div', { 'data-disc': 'text', 'data-disc-messages': 'HELLO.|FLIP!|FAST.', 'data-disc-scale': 2 }, 'HELLO.'),
+        h('div', { className: 'row' },
+          h(F.Button, { 'data-disc': 'fill', 'data-disc-color': 'orange', 'data-disc-hover': 'white' }, 'Get started'),
+          h(F.Button, { variant: 'secondary', 'data-disc': 'outline', 'data-disc-hover': 'orange' }, 'View schedule')))));
+</script>
+</body>
+</html>
